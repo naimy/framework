@@ -1,6 +1,8 @@
 <?php
 
-class PagesController extends Controller {
+//namespace controller;
+
+class Index extends Controller {
 
 	function index(){
 
@@ -14,6 +16,7 @@ class PagesController extends Controller {
 		$this->setRessources('js' , 'global');
 		$this->setRessources('js' , 'index');
 
+		$this->set('Title' , 'Title');
 
 		$this->render('index');
 

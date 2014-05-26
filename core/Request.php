@@ -14,7 +14,7 @@ class Request {
 		}
 		else{
 
-			$this->url = "/pages";
+			$this->url = "/index";
 
 		}
 	}

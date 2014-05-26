@@ -6,9 +6,7 @@ class Dispatcher {
 
 	function __construct() {
 
-		$this->request = new Request();
-
-		if($this->checkUrl($this->request->url)){
+			$this->request = new Request();
 
 			Router::parse($this->request->url, $this->request);
 
@@ -24,23 +22,17 @@ class Dispatcher {
 
 			$controller->render($this->request->action);
 
-		}else{
-
-			$this->error('probleme');
-
-		}
-
 	}
 
 	function loadController(){
 
-		$name = ucfirst($this->request->controller).'Controller';
+		$name = ucfirst($this->request->controller);
 
 		$file = ROOT.DS.'controller'.DS.$name.'.php';
 
 		if(file_exists($file)){
 
-			require $file;
+			require_once $file;
 
 			return new $name($this->request);
 		}
@@ -52,11 +44,6 @@ class Dispatcher {
 
 	}
 
-	function checkUrl($url){
-
-		return true;
-
-	}
 
 	function error($message){
 

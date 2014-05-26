@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Titre de la page</title>
+  <title><?php isset($this->Title) ? $this->Title : ''; ?></title>
   <!-- CSS -->
   <?php foreach($this->ressourcesCss as $ressource){echo $ressource;} ?>
 </head>

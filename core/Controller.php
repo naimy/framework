@@ -1,6 +1,6 @@
 <?php
 
-class Controller {
+abstract class Controller {
 
 	public $request;
 
@@ -23,17 +23,22 @@ class Controller {
 
 	public function render($view){
 
-		if($this->rendered){return false;}
+		if($this->rendered){
+
+			return false;
+
+		}
 
 		extract($this->vars);
 
 		if(strpos($view, "/") === 0){
 
-			$view = ROOT.DS.'view'.$view.'.php';
+			$view = ROOT.DS.'view'.$view.DS.get_class($this).'.php';
+
 
 		}else{
 
-			$view = ROOT.DS.'view'.DS.$this->request->controller.DS.$view.'.php';
+			$view = ROOT.DS.'view'.DS.get_class($this).DS.$view.'.php';
 
 		}
 
